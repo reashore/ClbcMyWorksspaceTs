@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, FormControlProps } from 'react-bootstrap';
 import { Vendor } from '../components/Vendor/Vendor';
 // import Vendor from 'vendor-component';
 import { Program } from '../components/Program/Program';
@@ -25,9 +25,8 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // onSubmit(event: React.FormEvent<HTMLButtonElement>): void {
-  // onSubmit(event: React.FormEvent<HTMLFormElement>): void {
-  onSubmit(event: any): void {
+  // // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  onSubmit(event: React.FormEvent<FormControlProps>): void {
     event.preventDefault();
 
     const program: ProgramData = this.getProgramValues();

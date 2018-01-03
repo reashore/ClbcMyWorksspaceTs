@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
 import { ProgramType } from '../ProgramType/ProgramType';
 // import CustomDatePicker from '../../common/CustomDatePicker';
 import { getServiceSubcategoryArray, getFundingModelArray, ServiceSubcategoryData, FundingModelData } from './ProgramData';
@@ -55,7 +55,11 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
     });
   }
 
-  onChangeServiceSubcategory(event: any) {
+  // // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  onChangeServiceSubcategory(event: React.FormEvent<FormControlProps>): void {
+    let formValue: string | number | string[] | undefined = event.currentTarget.value;
+    // tslint:disable-next-line:no-console
+    console.log(formValue);
     const serviceSubcategoryId = parseInt(this._serviceSubcategoryId.value, 10);
     this.fundingModels = getFundingModelArray(this.fundingModelServiceUrl, serviceSubcategoryId);
     this.forceUpdate();
@@ -70,7 +74,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
   //   this.setState({ programName: event.target.value });
   // }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Panel header="Program" bsStyle="primary">
         <Grid fluid={true}>

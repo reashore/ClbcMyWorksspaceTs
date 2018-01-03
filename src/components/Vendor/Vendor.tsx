@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
 import { VendorData, getVendorArray } from './VendorData';
 
 interface VendorState {
@@ -40,7 +40,8 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
     });
   }
 
-  onChange(event: any) {
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  onChange(event: React.FormEvent<FormControlProps>) {
     const vendorId = parseInt(this._vendorId.value, 10);
     const selectedVendor = this.vendorArray.find((vendor: VendorData) => vendor.vendorId === vendorId) as VendorData;
 

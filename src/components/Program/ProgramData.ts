@@ -25,7 +25,7 @@ export function getServiceSubcategoryArray(serviceUrl: string): Array<ServiceSub
 }
 
 export function getFundingModelArray(serviceUrl: string, serviceSubcategory: number): Array<FundingModelData> {
-  let fundingModelArray = [];
+  let fundingModelArray: Array<FundingModelData> = [];
   const numberFundingModels: number = 6;
 
   for (let n: number = 1; n <= numberFundingModels; n++) {

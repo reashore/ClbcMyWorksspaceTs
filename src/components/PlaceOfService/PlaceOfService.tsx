@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { FormGroup, ControlLabel, FormControl, Panel, Button } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Panel, Button, FormControlProps } from 'react-bootstrap';
 import { PlaceOfServiceData, getPlaceOfServiceArray } from './PlaceOfServiceData';
 
 interface PlaceofServiceProps {
@@ -27,7 +27,8 @@ export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
     });
   }
 
-  onClick(event: any) {
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  onClick(event: React.FormEvent<FormControlProps>) {
     // for now, do nothing
     event.preventDefault();
   }
