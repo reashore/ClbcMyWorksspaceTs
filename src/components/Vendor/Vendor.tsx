@@ -3,13 +3,13 @@ import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { VendorData, getVendorArray } from './VendorData';
 
-export interface VendorState {
+interface VendorState {
   ocgNumber: string;
   managingQsArea: string;
   primaryAddress: string;
 }
 
-export interface VendorProps {
+interface VendorProps {
   serviceUrl: string;
 }
 
@@ -87,5 +87,3 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
     );
   }
 }
-
-export default Vendor;

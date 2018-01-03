@@ -3,11 +3,11 @@ import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Panel } from 'react-bootstrap';
 import { CpdAreaData, getCpdAreaArray } from './CommunityData';
 
-export interface CommunityProps {
+interface CommunityProps {
   serviceUrl: string;
 }
 
-class Community extends React.Component<CommunityProps, {}> {
+export class Community extends React.Component<CommunityProps, {}> {
   cpdAreas: Array<CpdAreaData>;
   serviceUrl: string;
 
@@ -39,5 +39,3 @@ class Community extends React.Component<CommunityProps, {}> {
     );
   }
 }
-
-export default Community;

@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Grid, Row, Col } from 'react-bootstrap';
 import { PlaceOfService } from '../PlaceOfService/PlaceOfService';
-import Community from '../Community/Community';
+import { Community } from '../Community/Community';
 import { ProgramTypeData, getProgramTypeArray } from '../ProgramType/ProgramTypeData';
 
-export interface PlaceofServiceProps {
+interface PlaceofServiceProps {
   serviceUrl: string;
 }
 

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Navbar, NavItem, MenuItem, NavDropdown, Nav } from 'react-bootstrap';
 
-const MainNavbar = () => (
+export const MainNavbar = () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
@@ -24,8 +24,6 @@ const MainNavbar = () => (
     </Nav>;
   </Navbar>
 );
-
-export default MainNavbar;
 
 // class MainNavbar extends React.Component {
 //   constructor(props) {

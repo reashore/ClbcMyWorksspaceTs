@@ -5,12 +5,17 @@ import { ProgramType } from '../ProgramType/ProgramType';
 // import CustomDatePicker from '../../common/CustomDatePicker';
 import { getServiceSubcategoryArray, getFundingModelArray, ServiceSubcategoryData, FundingModelData } from './ProgramData';
 
-export interface ProgramProps {
+interface ProgramProps {
   serviceSubcategoryServiceUrl: string;
   fundingModelServiceUrl: string;
 }
 
-export class Program extends React.Component<ProgramProps, {}> {
+interface ProgramState {
+  programName: string | undefined;
+  description: string | undefined;
+}
+
+export class Program extends React.Component<ProgramProps, ProgramState> {
   private serviceSubcategoryServiceUrl: string;
   private fundingModelServiceUrl: string;
   private serviceSubcategories: ServiceSubcategoryData[];
@@ -21,7 +26,7 @@ export class Program extends React.Component<ProgramProps, {}> {
     super(props);
 
     this.state = {
-      programName: undefined,
+      programName: '',
       description: ''
     };
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Panel, Button } from 'react-bootstrap';
 import { PlaceOfServiceData, getPlaceOfServiceArray } from './PlaceOfServiceData';
 
-export interface PlaceofServiceProps {
+interface PlaceofServiceProps {
   serviceUrl: string;
 }
 

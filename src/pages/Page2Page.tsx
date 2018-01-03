@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Jumbotron, Button, Panel } from 'react-bootstrap';
 
-const Page2Page = () => (
+export const Page2Page = () => (
   <div>
     <Jumbotron>
       <h1>Page 2</h1>
@@ -20,5 +20,3 @@ const Page2Page = () => (
     </Panel>
   </div>
 );
-
-export default Page2Page;
