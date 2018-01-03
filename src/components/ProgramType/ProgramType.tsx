@@ -20,12 +20,11 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
     this.programTypes = getProgramTypeArray(this.serviceUrl);
   }
 
-  // todo: Fix return type
-  createSelectOptionsFromProgramTypes(programTypeArray: Array<ProgramTypeData>): any {
-    return programTypeArray.map((programType: ProgramTypeData) => {
+  createSelectOptionsFromProgramTypes(programTypeArray: Array<ProgramTypeData>): JSX.Element[]  {
+    return programTypeArray.map((programType: ProgramTypeData): JSX.Element => {
       const key: number = programType.programTypeId;
       const value: string = programType.programType;
-      return <option key={key} value={key}>{value}</option>;
+      return <option key={key} value={key} >{value}</option>; 
     });
   }
 

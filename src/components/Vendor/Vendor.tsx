@@ -32,8 +32,8 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
     this.onChange = this.onChange.bind(this);
   }
 
-  createSelectOptionsFromVendors() {
-    return this.vendorArray.map(vendor => {
+  createSelectOptionsFromVendors(): JSX.Element[] {
+    return this.vendorArray.map((vendor: VendorData): JSX.Element => {
       const key = vendor.vendorId;
       const value = vendor.name;
       return <option key={key} value={key}>{value}</option>;

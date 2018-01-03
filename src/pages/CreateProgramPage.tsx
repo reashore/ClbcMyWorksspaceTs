@@ -5,44 +5,6 @@ import Vendor from '../components/Vendor/Vendor';
 // import Vendor from 'vendor-component';
 import { Program } from '../components/Program/Program';
 
-// const CreateProgramPage = () => (
-//   <div>
-//     <Jumbotron>
-//       <h1>Create Program Page</h1>
-//       <p>
-//         A simple jumbotron-style component for calling extra attention to
-//         featured content or information.
-//       </p>
-//       <p>
-//         <Button bsStyle="primary">Learn more</Button>
-//       </p>
-//     </Jumbotron>
-
-//     <Panel header="Page 1" bsStyle="primary">
-//       <h2>Page 1</h2>
-//     </Panel>
-//   </div>
-// );
-
-// class CreateProgramPage extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Jumbotron>
-//           <h1>Create Program Page</h1>
-//           <p>
-//             A simple jumbotron-style component for calling extra attention to
-//             featured content or information.
-//           </p>
-//           <p>
-//             <Button bsStyle="primary">Learn more</Button>
-//           </p>
-//         </Jumbotron>
-//       </div>
-//     );
-//   }
-// }
-
 interface ProgramData {
   programId: number;
   programName: string;
@@ -56,14 +18,16 @@ interface ProgramData {
   placeOfServiceId: string;
 }
 
-class CreateProgramPage extends React.Component {
-  constructor(props: any) {
+class CreateProgramPage extends React.Component<{}, {}> {
+  constructor(props: {}) {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(event: any) {
+  // onSubmit(event: React.FormEvent<HTMLButtonElement>): void {
+  // onSubmit(event: React.FormEvent<HTMLFormElement>): void {
+  onSubmit(event: any): void {
     event.preventDefault();
 
     const program: ProgramData = this.getProgramValues();
@@ -73,10 +37,7 @@ class CreateProgramPage extends React.Component {
   }
 
   getProgramValues(): ProgramData {
-    // const createProgramForm = document.forms.createProgramForm;
-    const createProgramForm: HTMLFormElement = document.getElementById(
-      'createProgramForm'
-    ) as HTMLFormElement;
+    const createProgramForm: HTMLFormElement = document.getElementById('createProgramForm') as HTMLFormElement;
 
     const program = {
       programId: 12345,

@@ -19,8 +19,8 @@ export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
     this.onClick = this.onClick.bind(this);
   }
 
-  createSelectOptionsFromPlaceofServices(placeOfServiceArray: Array<PlaceOfServiceData>) {
-    return placeOfServiceArray.map((placeOfService: PlaceOfServiceData) => {
+  createSelectOptionsFromPlaceofServices(placeOfServiceArray: Array<PlaceOfServiceData>): JSX.Element[] {
+    return placeOfServiceArray.map((placeOfService: PlaceOfServiceData): JSX.Element => {
       const key = placeOfService.placeOfServiceId;
       const value = placeOfService.placeOfService;
       return <option key={key} value={key}>{value}</option>;

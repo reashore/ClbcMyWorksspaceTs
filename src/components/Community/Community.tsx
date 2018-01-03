@@ -18,9 +18,8 @@ class Community extends React.Component<CommunityProps, {}> {
     this.cpdAreas = getCpdAreaArray(this.serviceUrl);
   }
 
-  // todo: Fix return type ()
-  createSelectOptionsFromCpdAreas(cpdAreas: Array<CpdAreaData>): any {
-    return cpdAreas.map((cpdArea: CpdAreaData) => {
+  createSelectOptionsFromCpdAreas(cpdAreas: Array<CpdAreaData>): JSX.Element[] {
+    return cpdAreas.map((cpdArea: CpdAreaData): JSX.Element => {
       const key: number = cpdArea.cpdAreaId;
       const value: string = cpdArea.cpdArea;
       return <option key={key} value={key}>{value}</option>;

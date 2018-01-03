@@ -1,8 +1,8 @@
 
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import ProgramType from '../ProgramType/ProgramType';
-import CustomDatePicker from '../../common/CustomDatePicker';
+import { ProgramType } from '../ProgramType/ProgramType';
+// import CustomDatePicker from '../../common/CustomDatePicker';
 import { getServiceSubcategoryArray, getFundingModelArray, ServiceSubcategoryData, FundingModelData } from './ProgramData';
 
 export interface ProgramProps {
@@ -20,10 +20,10 @@ export class Program extends React.Component<ProgramProps, {}> {
   constructor(props: ProgramProps) {
     super(props);
 
-    // this.state = {
-    //   programName: undefined,
-    //   description: ""
-    // }
+    this.state = {
+      programName: undefined,
+      description: ''
+    };
 
     this.serviceSubcategoryServiceUrl = props.serviceSubcategoryServiceUrl;
     this.fundingModelServiceUrl = props.fundingModelServiceUrl;
@@ -34,18 +34,16 @@ export class Program extends React.Component<ProgramProps, {}> {
     // this.onChangeProgramName = this.onChangeProgramName.bind(this);
   }
 
-  // todo: Fix return type
-  createSelectOptionsFromServiceSubcategories(serviceSubcategoryArray: Array<ServiceSubcategoryData>): any {
-    return serviceSubcategoryArray.map((serviceSubcategory: ServiceSubcategoryData) => {
+  createSelectOptionsFromServiceSubcategories(serviceSubcategoryArray: Array<ServiceSubcategoryData>): JSX.Element[] {
+    return serviceSubcategoryArray.map((serviceSubcategory: ServiceSubcategoryData): JSX.Element => {
       const key: number = serviceSubcategory.serviceSubcategoryId;
       const value: string = serviceSubcategory.serviceSubcategory;
       return <option key={key} value={key}>{value}</option>;
     });
   }
 
-  // todo: Fix return type
-  createSelectOptionsFromFundingModels(fundingModelArray: Array<FundingModelData>): any {
-    return fundingModelArray.map(fundingModel => {
+  createSelectOptionsFromFundingModels(fundingModelArray: Array<FundingModelData>): JSX.Element[] {
+    return fundingModelArray.map((fundingModel: FundingModelData): JSX.Element => {
       const key = fundingModel.fundingModelId;
       const value = fundingModel.fundingModel;
       return <option key={key} value={key}>{value}</option>;
@@ -91,7 +89,8 @@ export class Program extends React.Component<ProgramProps, {}> {
 
               <FormGroup controlId="startDate" bsSize="small">
                 <ControlLabel>Start Date (YYYY/MM/DD):</ControlLabel>
-                <CustomDatePicker />
+                {/* <CustomDatePicker /> */}
+                <FormControl type="date" name="startDate" required={true} placeholder="Start Date" />
               </FormGroup>
             </Col>
 
