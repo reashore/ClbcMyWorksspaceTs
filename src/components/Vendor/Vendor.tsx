@@ -15,7 +15,7 @@ interface VendorProps {
 
 export class Vendor extends React.Component<VendorProps, VendorState> {
   private serviceUrl: string;
-  private vendorArray: Array<VendorData>;
+  private vendorArray: ReadonlyArray<VendorData>;
   private vendorId: HTMLInputElement;
 
   constructor(props: VendorProps) {

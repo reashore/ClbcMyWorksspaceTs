@@ -39,7 +39,7 @@ export const MainNavbar = (): JSX.Element => (
         <MenuItem divider={true} />
         <MenuItem href="/createprogram">Create Program</MenuItem>
       </NavDropdown>
-    </Nav>;
+    </Nav>
   </Navbar>
 );
 

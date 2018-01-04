@@ -94,7 +94,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
                 <FormControl componentClass="textarea" name="description" rows={2} required={true} placeholder="Description" />
               </FormGroup>
               <FormGroup controlId="startDate" bsSize="small">
-                <ControlLabel>Start Date (dd/mm/yyyy):</ControlLabel>
+                <ControlLabel>Start Date:</ControlLabel>
                 {/* <CustomDatePicker /> */}
                 <FormControl type="date" name="startDate" required={true} placeholder="Start Date" />
               </FormGroup>
