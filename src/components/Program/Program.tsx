@@ -20,7 +20,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
   private fundingModelServiceUrl: string;
   private serviceSubcategories: ServiceSubcategoryData[];
   private fundingModels: FundingModelData[];
-  private _serviceSubcategoryId: HTMLInputElement;
+  private serviceSubcategoryId: HTMLInputElement;
 
   constructor(props: ProgramProps) {
     super(props);
@@ -49,8 +49,8 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
 
   createSelectOptionsFromFundingModels(fundingModelArray: Array<FundingModelData>): JSX.Element[] {
     return fundingModelArray.map((fundingModel: FundingModelData): JSX.Element => {
-      const key = fundingModel.fundingModelId;
-      const value = fundingModel.fundingModel;
+      const key: number = fundingModel.fundingModelId;
+      const value: string = fundingModel.fundingModel;
       return <option key={key} value={key}>{value}</option>;
     });
   }
@@ -60,7 +60,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
     let formValue: string | number | string[] | undefined = event.currentTarget.value;
     // tslint:disable-next-line:no-console
     console.log(formValue);
-    const serviceSubcategoryId = parseInt(this._serviceSubcategoryId.value, 10);
+    const serviceSubcategoryId = parseInt(this.serviceSubcategoryId.value, 10);
     this.fundingModels = getFundingModelArray(this.fundingModelServiceUrl, serviceSubcategoryId);
     this.forceUpdate();
   }
@@ -106,7 +106,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
             <Col md={6}>
               <FormGroup controlId="serviceSubcategoryId" bsSize="small">
                 <ControlLabel>Service Subcategory:</ControlLabel>
-                <FormControl componentClass="select" inputRef={ref => { this._serviceSubcategoryId = ref; }} onChange={this.onChangeServiceSubcategory}>
+                <FormControl componentClass="select" inputRef={ref => { this.serviceSubcategoryId = ref; }} onChange={this.onChangeServiceSubcategory}>
                   {this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories)}
                 </FormControl>
               </FormGroup>

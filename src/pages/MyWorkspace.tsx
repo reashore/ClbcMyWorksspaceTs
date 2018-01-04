@@ -12,7 +12,7 @@ export const MyWorkspace = () => (
     <div className="container">
       <MainNavbar />
 
-      <Route exact={true} path="/" component={Page1Page} />
+      <Route path="/" component={Page1Page} exact={true} />
       <Route path="/page2" component={Page2Page} />
       <Route path="/page3" component={Page3Page} />
       <Route path="/createprogram" component={CreateProgramPage} />

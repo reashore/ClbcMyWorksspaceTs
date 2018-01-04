@@ -8,13 +8,13 @@ interface ProgramData {
   programId: number;
   programName: string;
   description: string;
-  startDate: string;
-  fundingModelId: string;
-  vendorId: string;
-  serviceSubcategoryId: string;
-  programTypeId: string;
-  cpdAreaId: string;
-  placeOfServiceId: string;
+  startDate: Date;
+  fundingModelId: number;
+  vendorId: number;
+  serviceSubcategoryId: number;
+  programTypeId: number;
+  cpdAreaId: number;
+  placeOfServiceId: number;
 }
 
 export class CreateProgramPage extends React.Component<{}, {}> {
@@ -35,9 +35,7 @@ export class CreateProgramPage extends React.Component<{}, {}> {
   }
 
   getProgramValues(): ProgramData {
-    const createProgramForm: HTMLFormElement = document.getElementById(
-      'createProgramForm'
-    ) as HTMLFormElement;
+    const createProgramForm: HTMLFormElement = document.getElementById('createProgramForm') as HTMLFormElement;
 
     const program = {
       programId: 12345,

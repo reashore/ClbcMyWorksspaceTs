@@ -16,7 +16,7 @@ interface VendorProps {
 export class Vendor extends React.Component<VendorProps, VendorState> {
   private serviceUrl: string;
   private vendorArray: Array<VendorData>;
-  private _vendorId: HTMLInputElement;
+  private vendorId: HTMLInputElement;
 
   constructor(props: VendorProps) {
     super(props);
@@ -34,15 +34,15 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
 
   createSelectOptionsFromVendors(): JSX.Element[] {
     return this.vendorArray.map((vendor: VendorData): JSX.Element => {
-      const key = vendor.vendorId;
-      const value = vendor.name;
+      const key: number = vendor.vendorId;
+      const value: string = vendor.name;
       return <option key={key} value={key}>{value}</option>;
     });
   }
 
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
   onChange(event: React.FormEvent<FormControlProps>) {
-    const vendorId = parseInt(this._vendorId.value, 10);
+    const vendorId = parseInt(this.vendorId.value, 10);
     const selectedVendor = this.vendorArray.find((vendor: VendorData) => vendor.vendorId === vendorId) as VendorData;
 
     this.setState({
@@ -57,7 +57,7 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
       <Panel header="Vendors" bsStyle="primary">
         <FormGroup controlId="vendorId" bsSize="small">
           <ControlLabel>Vendor Name:</ControlLabel>
-          <FormControl componentClass="select" inputRef={ref => { this._vendorId = ref; }} onChange={this.onChange}>
+          <FormControl componentClass="select" inputRef={ref => { this.vendorId = ref; }} onChange={this.onChange}>
             {this.createSelectOptionsFromVendors()}
           </FormControl>
         </FormGroup>

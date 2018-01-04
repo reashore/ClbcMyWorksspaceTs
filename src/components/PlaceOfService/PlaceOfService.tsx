@@ -21,8 +21,8 @@ export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
 
   createSelectOptionsFromPlaceofServices(placeOfServiceArray: Array<PlaceOfServiceData>): JSX.Element[] {
     return placeOfServiceArray.map((placeOfService: PlaceOfServiceData): JSX.Element => {
-      const key = placeOfService.placeOfServiceId;
-      const value = placeOfService.placeOfService;
+      const key: number = placeOfService.placeOfServiceId;
+      const value: string = placeOfService.placeOfService;
       return <option key={key} value={key}>{value}</option>;
     });
   }

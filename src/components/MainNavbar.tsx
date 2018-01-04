@@ -11,10 +11,28 @@ export const MainNavbar = () => (
     </Navbar.Header>
     <Nav>
       <NavItem href="/">Page 1</NavItem>
-      <NavItem href="/page2">Page 2</NavItem>
-      <NavItem href="/page3">Page 3</NavItem>
-      <NavItem href="/createprogram">Create Program</NavItem>
-      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+      <NavDropdown title="Menu1" id="menu1">
+        <MenuItem href="/">Page 1</MenuItem>
+        <MenuItem href="/page2">Page 2</MenuItem>
+        <MenuItem href="/page3">Page 3</MenuItem>
+        <MenuItem divider={true} />
+        <MenuItem href="/createprogram">Create Program</MenuItem>
+      </NavDropdown>
+      <NavDropdown title="Menu2" id="menu2">
+        <MenuItem href="/">Page 1</MenuItem>
+        <MenuItem href="/page2">Page 2</MenuItem>
+        <MenuItem href="/page3">Page 3</MenuItem>
+        <MenuItem divider={true} />
+        <MenuItem href="/createprogram">Create Program</MenuItem>
+      </NavDropdown>
+      <NavDropdown title="Menu3" id="menu3">
+        <MenuItem href="/">Page 1</MenuItem>
+        <MenuItem href="/page2">Page 2</MenuItem>
+        <MenuItem href="/page3">Page 3</MenuItem>
+        <MenuItem divider={true} />
+        <MenuItem href="/createprogram">Create Program</MenuItem>
+      </NavDropdown>
+      <NavDropdown title="Menu3" id="menu4">
         <MenuItem href="/">Page 1</MenuItem>
         <MenuItem href="/page2">Page 2</MenuItem>
         <MenuItem href="/page3">Page 3</MenuItem>
