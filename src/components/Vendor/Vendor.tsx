@@ -52,7 +52,7 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
     });
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Panel header="Vendors" bsStyle="primary">
         <FormGroup controlId="vendorId" bsSize="small">

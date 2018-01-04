@@ -26,7 +26,7 @@ export class Community extends React.Component<CommunityProps, {}> {
     });
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Panel header="Community" bsStyle="primary">
         <FormGroup controlId="cpdAreaId" bsSize="small">

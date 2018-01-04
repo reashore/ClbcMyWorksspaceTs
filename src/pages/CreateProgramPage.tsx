@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { Form, Button, FormControlProps } from 'react-bootstrap';
 import { Vendor } from '../components/Vendor/Vendor';
@@ -25,7 +24,7 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
   onSubmit(event: React.FormEvent<FormControlProps>): void {
     event.preventDefault();
 
@@ -36,7 +35,9 @@ export class CreateProgramPage extends React.Component<{}, {}> {
   }
 
   getProgramValues(): ProgramData {
-    const createProgramForm: HTMLFormElement = document.getElementById('createProgramForm') as HTMLFormElement;
+    const createProgramForm: HTMLFormElement = document.getElementById(
+      'createProgramForm'
+    ) as HTMLFormElement;
 
     const program = {
       programId: 12345,
@@ -71,7 +72,7 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     return message;
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Form id="createProgramForm" onSubmit={this.onSubmit}>
         <h2>Create Program</h2>

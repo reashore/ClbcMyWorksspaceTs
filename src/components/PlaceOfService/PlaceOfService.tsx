@@ -33,7 +33,7 @@ export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
     event.preventDefault();
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Panel header="Place of Service" bsStyle="primary">
         <FormGroup controlId="placeOfServiceId" bsSize="small">

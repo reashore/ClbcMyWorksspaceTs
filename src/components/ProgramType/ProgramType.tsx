@@ -28,7 +28,7 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
     });
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <FormGroup controlId="programTypeId" bsSize="small">
