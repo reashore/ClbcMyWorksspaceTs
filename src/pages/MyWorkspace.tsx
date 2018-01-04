@@ -7,7 +7,7 @@ import { Page1Page } from './Page1Page';
 import { Page2Page } from './Page2Page';
 import { Page3Page } from './Page3Page';
 
-export const MyWorkspace = () => (
+export const MyWorkspace = (): JSX.Element => (
   <BrowserRouter>
     <div className="container">
       <MainNavbar />

@@ -30,26 +30,26 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
 
   render(): JSX.Element {
     return (
-      <div>
-        <FormGroup controlId="programTypeId" bsSize="small">
-          <ControlLabel>Program Type:</ControlLabel>
-          <FormControl componentClass="select">
-            {this.createSelectOptionsFromProgramTypes(this.programTypes)}
-          </FormControl>
-        </FormGroup>
-
-        <Grid fluid={true}>
-          <Row>
-            <Col md={6}>
-              <Community serviceUrl="http://localhost/api/cpdAreas" />
-            </Col>
-
-            <Col md={6}>
-              <PlaceOfService serviceUrl="http://localhost/api/placeofservices" />
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <Grid fluid={true}>
+        <Row>
+          <Col md={12}>
+            <FormGroup controlId="programTypeId" bsSize="small">
+              <ControlLabel>Program Type:</ControlLabel>
+              <FormControl componentClass="select">
+                {this.createSelectOptionsFromProgramTypes(this.programTypes)}
+              </FormControl>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <Community serviceUrl="http://localhost/api/cpdAreas" />
+          </Col>
+          <Col md={6}>
+            <PlaceOfService serviceUrl="http://localhost/api/placeofservices" />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }

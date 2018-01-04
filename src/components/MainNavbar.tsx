@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Navbar, NavItem, MenuItem, NavDropdown, Nav } from 'react-bootstrap';
 
-export const MainNavbar = () => (
+export const MainNavbar = (): JSX.Element => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
@@ -32,7 +32,7 @@ export const MainNavbar = () => (
         <MenuItem divider={true} />
         <MenuItem href="/createprogram">Create Program</MenuItem>
       </NavDropdown>
-      <NavDropdown title="Menu3" id="menu4">
+      <NavDropdown title="Menu4" id="menu4">
         <MenuItem href="/">Page 1</MenuItem>
         <MenuItem href="/page2">Page 2</MenuItem>
         <MenuItem href="/page3">Page 3</MenuItem>

@@ -43,7 +43,8 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
   onChange(event: React.FormEvent<FormControlProps>) {
     const vendorId = parseInt(this.vendorId.value, 10);
-    const selectedVendor = this.vendorArray.find((vendor: VendorData) => vendor.vendorId === vendorId) as VendorData;
+    const predicate = (vendor: VendorData): boolean => vendor.vendorId === vendorId;
+    const selectedVendor = this.vendorArray.find(predicate) as VendorData;
 
     this.setState({
       ocgNumber: selectedVendor.ocgNumber,

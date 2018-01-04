@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Jumbotron, Button, Panel } from 'react-bootstrap';
 
-export const Page1Page = () => (
+export const Page1Page = (): JSX.Element => (
   <div>
     <Jumbotron>
       <h1>Page 1</h1>

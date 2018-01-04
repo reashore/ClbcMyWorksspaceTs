@@ -94,7 +94,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
                 <FormControl componentClass="textarea" name="description" rows={2} required={true} placeholder="Description" />
               </FormGroup>
               <FormGroup controlId="startDate" bsSize="small">
-                <ControlLabel>Start Date (YYYY/MM/DD):</ControlLabel>
+                <ControlLabel>Start Date (dd/mm/yyyy):</ControlLabel>
                 {/* <CustomDatePicker /> */}
                 <FormControl type="date" name="startDate" required={true} placeholder="Start Date" />
               </FormGroup>
@@ -102,7 +102,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
             <Col md={6}>
               <FormGroup controlId="serviceSubcategoryId" bsSize="small">
                 <ControlLabel>Service Subcategory:</ControlLabel>
-                <FormControl componentClass="select" inputRef={ref => { this.serviceSubcategoryId = ref; }} onChange={this.onChangeServiceSubcategory}>
+                <FormControl componentClass="select" inputRef={(ref: HTMLInputElement): void => { this.serviceSubcategoryId = ref; }} onChange={this.onChangeServiceSubcategory}>
                   {this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories)}
                 </FormControl>
               </FormGroup>
