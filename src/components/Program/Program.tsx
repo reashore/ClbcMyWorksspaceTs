@@ -57,7 +57,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
 
   // // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
   onChangeServiceSubcategory(event: React.FormEvent<FormControlProps>): void {
-    let formValue: string | number | string[] | undefined = event.currentTarget.value;
+    let formValue: number | string |  string[] | undefined = event.currentTarget.value;
     // tslint:disable-next-line:no-console
     console.log(formValue);
     const serviceSubcategoryId = parseInt(this.serviceSubcategoryId.value, 10);
@@ -85,24 +85,20 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
                 <FormControl type="text" name="programName" required placeholder="Program Name"
                         value={this.state.programName} onChange={this.onChangeProgramName} />
               </FormGroup> */}
-
               <FormGroup controlId="programName" bsSize="small">
                 <ControlLabel>Program Name:</ControlLabel>
                 <FormControl type="text" name="programName" required={true} placeholder="Program Name" />
               </FormGroup>
-
               <FormGroup controlId="description" bsSize="small">
                 <ControlLabel>Description:</ControlLabel>
                 <FormControl componentClass="textarea" name="description" rows={2} required={true} placeholder="Description" />
               </FormGroup>
-
               <FormGroup controlId="startDate" bsSize="small">
                 <ControlLabel>Start Date (YYYY/MM/DD):</ControlLabel>
                 {/* <CustomDatePicker /> */}
                 <FormControl type="date" name="startDate" required={true} placeholder="Start Date" />
               </FormGroup>
             </Col>
-
             <Col md={6}>
               <FormGroup controlId="serviceSubcategoryId" bsSize="small">
                 <ControlLabel>Service Subcategory:</ControlLabel>
@@ -110,7 +106,6 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
                   {this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories)}
                 </FormControl>
               </FormGroup>
-
               <FormGroup controlId="fundingModelId" bsSize="small">
                 <ControlLabel>Funding Model:</ControlLabel>
                 <FormControl componentClass="select">
@@ -119,9 +114,12 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
               </FormGroup>
             </Col>
           </Row>
+          <Row>
+            <Col md={12}>
+              <ProgramType serviceUrl="http://localhost/api/programtypes" />
+            </Col>
+          </Row>
         </Grid>
-
-        <ProgramType serviceUrl="http://localhost/api/programtypes" />
       </Panel>
     );
   }
