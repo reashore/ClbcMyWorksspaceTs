@@ -22,7 +22,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
   private fundingModels: FundingModelData[];
   private serviceSubcategoryId: HTMLInputElement;
 
-  constructor(props: ProgramProps) {
+  public constructor(props: ProgramProps) {
     super(props);
 
     this.state = {
@@ -39,42 +39,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
     // this.onChangeProgramName = this.onChangeProgramName.bind(this);
   }
 
-  createSelectOptionsFromServiceSubcategories(serviceSubcategoryArray: Array<ServiceSubcategoryData>): JSX.Element[] {
-    return serviceSubcategoryArray.map((serviceSubcategory: ServiceSubcategoryData): JSX.Element => {
-      const key: number = serviceSubcategory.serviceSubcategoryId;
-      const value: string = serviceSubcategory.serviceSubcategory;
-      return <option key={key} value={key}>{value}</option>;
-    });
-  }
-
-  createSelectOptionsFromFundingModels(fundingModelArray: Array<FundingModelData>): JSX.Element[] {
-    return fundingModelArray.map((fundingModel: FundingModelData): JSX.Element => {
-      const key: number = fundingModel.fundingModelId;
-      const value: string = fundingModel.fundingModel;
-      return <option key={key} value={key}>{value}</option>;
-    });
-  }
-
-  // // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
-  onChangeServiceSubcategory(event: React.FormEvent<FormControlProps>): void {
-    let formValue: number | string |  string[] | undefined = event.currentTarget.value;
-    // tslint:disable-next-line:no-console
-    console.log(formValue);
-    const serviceSubcategoryId = parseInt(this.serviceSubcategoryId.value, 10);
-    this.fundingModels = getFundingModelArray(this.fundingModelServiceUrl, serviceSubcategoryId);
-    this.forceUpdate();
-  }
-
-  // getProgramNameValidationState() {
-  //   const length = this.state.programName.length;
-  //   return (length === 0) ? 'error' : 'success';
-  // }
-
-  // onChangeProgramName(event) {
-  //   this.setState({ programName: event.target.value });
-  // }
-
-  render(): JSX.Element {
+  public render(): JSX.Element {
     return (
       <Panel header="Program" bsStyle="primary">
         <Grid fluid={true}>
@@ -123,4 +88,40 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
       </Panel>
     );
   }
+
+  private createSelectOptionsFromServiceSubcategories(serviceSubcategoryArray: Array<ServiceSubcategoryData>): JSX.Element[] {
+    return serviceSubcategoryArray.map((serviceSubcategory: ServiceSubcategoryData): JSX.Element => {
+      const key: number = serviceSubcategory.serviceSubcategoryId;
+      const value: string = serviceSubcategory.serviceSubcategory;
+      return <option key={key} value={key}>{value}</option>;
+    });
+  }
+
+  private createSelectOptionsFromFundingModels(fundingModelArray: Array<FundingModelData>): JSX.Element[] {
+    return fundingModelArray.map((fundingModel: FundingModelData): JSX.Element => {
+      const key: number = fundingModel.fundingModelId;
+      const value: string = fundingModel.fundingModel;
+      return <option key={key} value={key}>{value}</option>;
+    });
+  }
+
+  // // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  private onChangeServiceSubcategory(event: React.FormEvent<FormControlProps>): void {
+    let formValue: number | string |  string[] | undefined = event.currentTarget.value;
+    // tslint:disable-next-line:no-console
+    console.log(formValue);
+    const serviceSubcategoryId = parseInt(this.serviceSubcategoryId.value, 10);
+    this.fundingModels = getFundingModelArray(this.fundingModelServiceUrl, serviceSubcategoryId);
+    this.forceUpdate();
+  }
+
+  // getProgramNameValidationState() {
+  //   const length = this.state.programName.length;
+  //   return (length === 0) ? 'error' : 'success';
+  // }
+
+  // onChangeProgramName(event) {
+  //   this.setState({ programName: event.target.value });
+  // }
+ 
 }

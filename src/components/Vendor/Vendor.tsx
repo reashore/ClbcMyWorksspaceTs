@@ -1,7 +1,13 @@
 
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
-import { VendorData, getVendorArray } from './VendorData';
+import { VendorData } from './VendorData';
+import { getVendorArray } from './VendorDataAccess';
+import DataAccess from './../../common/DataAccess';
+
+interface VendorProps {
+  serviceUrl: string;
+}
 
 interface VendorState {
   ocgNumber: string;
@@ -9,16 +15,13 @@ interface VendorState {
   primaryAddress: string;
 }
 
-interface VendorProps {
-  serviceUrl: string;
-}
-
 export class Vendor extends React.Component<VendorProps, VendorState> {
   private serviceUrl: string;
   private vendorArray: ReadonlyArray<VendorData>;
   private vendorId: HTMLInputElement;
+  private dataAccess: DataAccess<VendorData>;
 
-  constructor(props: VendorProps) {
+  public constructor(props: VendorProps) {
     super(props);
 
     this.state = {
@@ -30,30 +33,10 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
     this.serviceUrl = props.serviceUrl;
     this.vendorArray = getVendorArray(this.serviceUrl);
     this.onChange = this.onChange.bind(this);
+    this.dataAccess = new DataAccess<VendorData>();
   }
 
-  createSelectOptionsFromVendors(): JSX.Element[] {
-    return this.vendorArray.map((vendor: VendorData): JSX.Element => {
-      const key: number = vendor.vendorId;
-      const value: string = vendor.name;
-      return <option key={key} value={key}>{value}</option>;
-    });
-  }
-
-  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
-  onChange(event: React.FormEvent<FormControlProps>) {
-    const vendorId = parseInt(this.vendorId.value, 10);
-    const predicate = (vendor: VendorData): boolean => vendor.vendorId === vendorId;
-    const selectedVendor = this.vendorArray.find(predicate) as VendorData;
-
-    this.setState({
-      ocgNumber: selectedVendor.ocgNumber,
-      managingQsArea: selectedVendor.managingQsArea,
-      primaryAddress: selectedVendor.primaryAddress
-    });
-  }
-
-  render(): JSX.Element {
+  public render(): JSX.Element {
     return (
       <Panel header="Vendors" bsStyle="primary">
         <Grid fluid={true}>
@@ -88,5 +71,26 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
         </Grid>
       </Panel>
     );
+  }
+
+  private createSelectOptionsFromVendors(): JSX.Element[] {
+    return this.vendorArray.map((vendor: VendorData): JSX.Element => {
+      const key: number = vendor.vendorId;
+      const value: string = vendor.name;
+      return <option key={key} value={key}>{value}</option>;
+    });
+  }
+
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  private onChange(event: React.FormEvent<FormControlProps>) {
+    const vendorId = parseInt(this.vendorId.value, 10);
+    const predicate = (vendor: VendorData): boolean => vendor.vendorId === vendorId;
+    const selectedVendor = this.vendorArray.find(predicate) as VendorData;
+
+    this.setState({
+      ocgNumber: selectedVendor.ocgNumber,
+      managingQsArea: selectedVendor.managingQsArea,
+      primaryAddress: selectedVendor.primaryAddress
+    });
   }
 }

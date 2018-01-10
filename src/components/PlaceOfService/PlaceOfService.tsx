@@ -8,10 +8,10 @@ interface PlaceofServiceProps {
 }
 
 export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
-  serviceUrl: string;
-  placeOfServiceArray: Array<PlaceOfServiceData>;
+  private serviceUrl: string;
+  private placeOfServiceArray: Array<PlaceOfServiceData>;
 
-  constructor(props: PlaceofServiceProps) {
+  public constructor(props: PlaceofServiceProps) {
     super(props);
 
     this.serviceUrl = props.serviceUrl;
@@ -19,21 +19,7 @@ export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
     this.onClick = this.onClick.bind(this);
   }
 
-  createSelectOptionsFromPlaceofServices(placeOfServiceArray: Array<PlaceOfServiceData>): JSX.Element[] {
-    return placeOfServiceArray.map((placeOfService: PlaceOfServiceData): JSX.Element => {
-      const key: number = placeOfService.placeOfServiceId;
-      const value: string = placeOfService.placeOfService;
-      return <option key={key} value={key}>{value}</option>;
-    });
-  }
-
-  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
-  onClick(event: React.FormEvent<FormControlProps>) {
-    // for now, do nothing
-    event.preventDefault();
-  }
-
-  render(): JSX.Element {
+  public render(): JSX.Element {
     return (
       <Panel header="Place of Service" bsStyle="primary">
         <FormGroup controlId="placeOfServiceId" bsSize="small">
@@ -46,5 +32,19 @@ export class PlaceOfService extends React.Component<PlaceofServiceProps, {}> {
         <Button type="submit" bsStyle="primary" bsSize="small" onClick={this.onClick}>Create Place of Service</Button>
       </Panel>
     );
+  }
+
+  private createSelectOptionsFromPlaceofServices(placeOfServiceArray: Array<PlaceOfServiceData>): JSX.Element[] {
+    return placeOfServiceArray.map((placeOfService: PlaceOfServiceData): JSX.Element => {
+      const key: number = placeOfService.placeOfServiceId;
+      const value: string = placeOfService.placeOfService;
+      return <option key={key} value={key}>{value}</option>;
+    });
+  }
+
+  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  private onClick(event: React.FormEvent<FormControlProps>) {
+    // for now, do nothing
+    event.preventDefault();
   }
 }

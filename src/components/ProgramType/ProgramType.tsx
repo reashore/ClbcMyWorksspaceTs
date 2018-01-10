@@ -10,25 +10,17 @@ interface PlaceofServiceProps {
 }
 
 export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
-  serviceUrl: string;
-  programTypes: Array<ProgramTypeData>;
+  private serviceUrl: string;
+  private programTypes: Array<ProgramTypeData>;
 
-  constructor(props: PlaceofServiceProps) {
+  public constructor(props: PlaceofServiceProps) {
     super(props);
 
     this.serviceUrl = props.serviceUrl;
     this.programTypes = getProgramTypeArray(this.serviceUrl);
   }
 
-  createSelectOptionsFromProgramTypes(programTypeArray: Array<ProgramTypeData>): JSX.Element[]  {
-    return programTypeArray.map((programType: ProgramTypeData): JSX.Element => {
-      const key: number = programType.programTypeId;
-      const value: string = programType.programType;
-      return <option key={key} value={key} >{value}</option>; 
-    });
-  }
-
-  render(): JSX.Element {
+  public render(): JSX.Element {
     return (
       <Grid fluid={true}>
         <Row>
@@ -51,5 +43,13 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
         </Row>
       </Grid>
     );
+  }
+
+  private createSelectOptionsFromProgramTypes(programTypeArray: Array<ProgramTypeData>): JSX.Element[]  {
+    return programTypeArray.map((programType: ProgramTypeData): JSX.Element => {
+      const key: number = programType.programTypeId;
+      const value: string = programType.programType;
+      return <option key={key} value={key} >{value}</option>; 
+    });
   }
 }

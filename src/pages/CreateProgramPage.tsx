@@ -18,14 +18,30 @@ interface ProgramData {
 }
 
 export class CreateProgramPage extends React.Component<{}, {}> {
-  constructor(props: {}) {
+  public constructor(props: {}) {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  public render(): JSX.Element {
+    return (
+      <Form id="createProgramForm" onSubmit={this.onSubmit}>
+        <h2>Create Program</h2>
+        <Vendor serviceUrl="http://localhost:3001/api/vendors" />
+        <Program
+          serviceSubcategoryServiceUrl="http://localhost:3001/api/serviceSubcategory"
+          fundingModelServiceUrl="http://localhost:3001/api/fundingModels"
+        />
+        <Button type="submit" bsStyle="primary" bsSize="small">
+          Save Program
+        </Button>
+      </Form>
+    );
+  }
+
   // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
-  onSubmit(event: React.FormEvent<FormControlProps>): void {
+  private onSubmit(event: React.FormEvent<FormControlProps>): void {
     event.preventDefault();
 
     const program: ProgramData = this.getProgramValues();
@@ -34,7 +50,7 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     alert(message);
   }
 
-  getProgramValues(): ProgramData {
+  private getProgramValues(): ProgramData {
     const createProgramForm: HTMLFormElement = document.getElementById('createProgramForm') as HTMLFormElement;
 
     const program = {
@@ -53,7 +69,7 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     return program;
   }
 
-  formatProgramValues(program: ProgramData): string {
+  private formatProgramValues(program: ProgramData): string {
     let message: string = 'Program values:\n\n';
 
     message += `Program Id = ${program.programId},\n`;
@@ -68,21 +84,5 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     message += `Place Of Service Id = ${program.placeOfServiceId}`;
 
     return message;
-  }
-
-  render(): JSX.Element {
-    return (
-      <Form id="createProgramForm" onSubmit={this.onSubmit}>
-        <h2>Create Program</h2>
-        <Vendor serviceUrl="http://localhost:3001/api/vendors" />
-        <Program
-          serviceSubcategoryServiceUrl="http://localhost:3001/api/serviceSubcategory"
-          fundingModelServiceUrl="http://localhost:3001/api/fundingModels"
-        />
-        <Button type="submit" bsStyle="primary" bsSize="small">
-          Save Program
-        </Button>
-      </Form>
-    );
   }
 }

@@ -8,25 +8,17 @@ interface CommunityProps {
 }
 
 export class Community extends React.Component<CommunityProps, {}> {
-  cpdAreas: Array<CpdAreaData>;
-  serviceUrl: string;
+  private cpdAreas: Array<CpdAreaData>;
+  private serviceUrl: string;
 
-  constructor(props: CommunityProps) {
+  public constructor(props: CommunityProps) {
     super(props);
 
     this.serviceUrl = props.serviceUrl;
     this.cpdAreas = getCpdAreaArray(this.serviceUrl);
   }
 
-  createSelectOptionsFromCpdAreas(cpdAreas: Array<CpdAreaData>): JSX.Element[] {
-    return cpdAreas.map((cpdArea: CpdAreaData): JSX.Element => {
-      const key: number = cpdArea.cpdAreaId;
-      const value: string = cpdArea.cpdArea;
-      return <option key={key} value={key}>{value}</option>;
-    });
-  }
-
-  render(): JSX.Element {
+  public render(): JSX.Element {
     return (
       <Panel header="Community" bsStyle="primary">
         <FormGroup controlId="cpdAreaId" bsSize="small">
@@ -37,5 +29,13 @@ export class Community extends React.Component<CommunityProps, {}> {
         </FormGroup>
       </Panel>
     );
+  }
+
+  private createSelectOptionsFromCpdAreas(cpdAreas: Array<CpdAreaData>): JSX.Element[] {
+    return cpdAreas.map((cpdArea: CpdAreaData): JSX.Element => {
+      const key: number = cpdArea.cpdAreaId;
+      const value: string = cpdArea.cpdArea;
+      return <option key={key} value={key}>{value}</option>;
+    });
   }
 }
