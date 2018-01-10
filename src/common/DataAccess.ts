@@ -1,6 +1,5 @@
 
 // tslint:disable:no-console
-
 import axios, { AxiosError } from 'axios';
 
 export class DataAccess<T> {

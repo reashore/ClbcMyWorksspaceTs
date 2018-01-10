@@ -16,7 +16,7 @@ interface VendorState {
 export class Vendor extends React.Component<VendorProps, VendorState> {
   private serviceUrl: string;
   private dataAccess: DataAccess<VendorData>;
-  private _vendorId: HTMLInputElement;
+  private vendorDropDownList: HTMLInputElement;
 
   public constructor(props: VendorProps) {
     super(props);
@@ -84,9 +84,9 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
         <Grid fluid={true}>
           <Row>
             <Col md={12}>
-              <FormGroup controlId="vendorId" bsSize="small">
+              <FormGroup controlId="vendorDropDownList" bsSize="small">
                 <ControlLabel>Vendor Name:</ControlLabel>
-                <FormControl componentClass="select" inputRef={ref => { this._vendorId = ref; }} onChange={this.onChange}>
+                <FormControl componentClass="select" inputRef={ref => { this.vendorDropDownList = ref; }} onChange={this.onChange}>
                   {this.createSelectOptionsFromVendors(dataArray)}
                 </FormControl>
               </FormGroup>
@@ -94,17 +94,17 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
           </Row>
           <Row>
             <Col md={6}>
-              <FormGroup controlId="ocgNumber" bsSize="small">
+              <FormGroup controlId="ocgNumberTextBox" bsSize="small">
                 <ControlLabel>OCG Number:</ControlLabel>
                 <FormControl type="text" placeholder="OCG Number" readOnly={true} value={ocgNumber} />
               </FormGroup>
-              <FormGroup controlId="managingQsArea" bsSize="small">
+              <FormGroup controlId="managingQsAreaTextbox" bsSize="small">
                 <ControlLabel>Managing QS Area:</ControlLabel>
                 <FormControl type="text" placeholder="Managing Qs Area" readOnly={true} value={managingQsArea} />
               </FormGroup>
             </Col>
             <Col md={6}>
-              <FormGroup controlId="primaryAddress" bsSize="small">
+              <FormGroup controlId="primaryAddressTextbox" bsSize="small">
                 <ControlLabel>Primary Address:</ControlLabel>
                 <FormControl type="text" placeholder="Primary Address" readOnly={true} value={primaryAddress} />
               </FormGroup>
@@ -125,7 +125,7 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
 
   // For event signature, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
   private onChange(event: React.FormEvent<FormControlProps>) {
-    const vendorId = parseInt(this._vendorId.value, 10);
+    const vendorId = parseInt(this.vendorDropDownList.value, 10);
 
     this.setState({
       vendorId: vendorId
