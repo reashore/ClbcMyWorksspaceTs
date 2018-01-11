@@ -68,7 +68,7 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
       );
     } else {
       // If state.data is not null or zero-length, 
-      // then vendorId must be defined and hence cast is valid
+      // then vendorId must be defined and hence casting to number is valid
       const vendorId = this.state.vendorId as number;
       return this.displayVendorForm(this.state.data, vendorId);
     }
