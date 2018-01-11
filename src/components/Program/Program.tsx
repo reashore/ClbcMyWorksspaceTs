@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
 import { ProgramType } from '../ProgramType/ProgramType';
-// import CustomDatePicker from '../../common/CustomDatePicker';
 import { getServiceSubcategoryArray, getFundingModelArray, ServiceSubcategoryData, FundingModelData } from './ProgramData';
 
 interface ProgramProps {
@@ -36,7 +35,6 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
     this.fundingModels = getFundingModelArray(this.fundingModelServiceUrl, 1);
 
     this.onChangeServiceSubcategory = this.onChangeServiceSubcategory.bind(this);
-    // this.onChangeProgramName = this.onChangeProgramName.bind(this);
   }
 
   public render(): JSX.Element {
@@ -45,33 +43,27 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
         <Grid fluid={true}>
           <Row>
             <Col md={6}>
-              {/* <FormGroup controlId="programName" bsSize="small" validationState={this.getProgramNameValidationState()} >
-                <ControlLabel>Program Name:</ControlLabel>
-                <FormControl type="text" name="programName" required placeholder="Program Name"
-                        value={this.state.programName} onChange={this.onChangeProgramName} />
-              </FormGroup> */}
-              <FormGroup controlId="programName" bsSize="small">
+              <FormGroup controlId="programNameTextbox" bsSize="small">
                 <ControlLabel>Program Name:</ControlLabel>
                 <FormControl type="text" name="programName" required={true} placeholder="Program Name" />
               </FormGroup>
-              <FormGroup controlId="description" bsSize="small">
+              <FormGroup controlId="descriptionTextbox" bsSize="small">
                 <ControlLabel>Description:</ControlLabel>
                 <FormControl componentClass="textarea" name="description" rows={2} required={true} placeholder="Description" />
               </FormGroup>
               <FormGroup controlId="startDate" bsSize="small">
                 <ControlLabel>Start Date:</ControlLabel>
-                {/* <CustomDatePicker /> */}
                 <FormControl type="date" name="startDate" required={true} placeholder="Start Date" />
               </FormGroup>
             </Col>
             <Col md={6}>
-              <FormGroup controlId="serviceSubcategoryId" bsSize="small">
+              <FormGroup controlId="serviceSubcategoryDropDownList" bsSize="small">
                 <ControlLabel>Service Subcategory:</ControlLabel>
                 <FormControl componentClass="select" inputRef={(ref: HTMLInputElement): void => { this.serviceSubcategoryId = ref; }} onChange={this.onChangeServiceSubcategory}>
                   {this.createSelectOptionsFromServiceSubcategories(this.serviceSubcategories)}
                 </FormControl>
               </FormGroup>
-              <FormGroup controlId="fundingModelId" bsSize="small">
+              <FormGroup controlId="fundingModelDropDownList" bsSize="small">
                 <ControlLabel>Funding Model:</ControlLabel>
                 <FormControl componentClass="select">
                   {this.createSelectOptionsFromFundingModels(this.fundingModels)}
@@ -114,14 +106,4 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
     this.fundingModels = getFundingModelArray(this.fundingModelServiceUrl, serviceSubcategoryId);
     this.forceUpdate();
   }
-
-  // getProgramNameValidationState() {
-  //   const length = this.state.programName.length;
-  //   return (length === 0) ? 'error' : 'success';
-  // }
-
-  // onChangeProgramName(event) {
-  //   this.setState({ programName: event.target.value });
-  // }
- 
 }

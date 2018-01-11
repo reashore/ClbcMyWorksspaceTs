@@ -70,11 +70,11 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
       // If state.data is not null or zero-length, 
       // then vendorId must be defined and hence casting to number is valid
       const vendorId = this.state.vendorId as number;
-      return this.displayVendorForm(this.state.data, vendorId);
+      return this.renderVendorForm(this.state.data, vendorId);
     }
   }
 
-  private displayVendorForm(dataArray: ReadonlyArray<VendorData>, vendorId: number): JSX.Element {
+  private renderVendorForm(dataArray: ReadonlyArray<VendorData>, vendorId: number): JSX.Element {
     const predicate = (vendor: VendorData): boolean => vendor.vendorId === vendorId;
     const selectedVendor = dataArray.find(predicate) as VendorData;
     const {ocgNumber, managingQsArea, primaryAddress}  = selectedVendor;

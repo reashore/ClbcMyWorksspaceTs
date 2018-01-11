@@ -55,15 +55,15 @@ export class CreateProgramPage extends React.Component<{}, {}> {
 
     const program = {
       programId: 12345,
-      programName: createProgramForm.programName.value,
-      description: createProgramForm.description.value,
+      programName: createProgramForm.programNameTextbox.value,
+      description: createProgramForm.descriptionTextbox.value,
       startDate: createProgramForm.startDate.value,
-      fundingModelId: createProgramForm.fundingModelId.value,
-      vendorId: createProgramForm.vendorId.value,
-      serviceSubcategoryId: createProgramForm.serviceSubcategoryId.value,
-      programTypeId: createProgramForm.programTypeId.value,
-      cpdAreaId: createProgramForm.cpdAreaId.value,
-      placeOfServiceId: createProgramForm.placeOfServiceId.value
+      fundingModelId: createProgramForm.fundingModelDropDownList.value,
+      vendorId: createProgramForm.vendorDropDownList.value,
+      serviceSubcategoryId: createProgramForm.serviceSubcategoryDropDownList.value,
+      programTypeId: createProgramForm.programTypeDropDownList.value,
+      cpdAreaId: createProgramForm.cpdAreaDropDownList.value,
+      placeOfServiceId: createProgramForm.placeOfServiceDropDownList.value
     };
 
     return program;

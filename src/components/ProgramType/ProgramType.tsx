@@ -25,7 +25,7 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
       <Grid fluid={true}>
         <Row>
           <Col md={12}>
-            <FormGroup controlId="programTypeId" bsSize="small">
+            <FormGroup controlId="programTypeDropDownList" bsSize="small">
               <ControlLabel>Program Type:</ControlLabel>
               <FormControl componentClass="select">
                 {this.createSelectOptionsFromProgramTypes(this.programTypes)}
@@ -35,10 +35,10 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
         </Row>
         <Row>
           <Col md={6}>
-            <Community serviceUrl="http://localhost/api/cpdAreas" />
+            <Community serviceUrl="http://localhost:3001/api/cpdAreas" />
           </Col>
           <Col md={6}>
-            <PlaceOfService serviceUrl="http://localhost/api/placeofservices" />
+            <PlaceOfService serviceUrl="http://localhost:3001/api/placeofservices" />
           </Col>
         </Row>
       </Grid>
