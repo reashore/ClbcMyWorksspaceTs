@@ -1,18 +1,18 @@
 
-export interface ProgramTypeData {
+export default interface ProgramTypeData {
   programTypeId: number;
-  programType: string;
+  name: string;
 }
 
-export function getProgramTypeArray(serviceurl: string): Array<ProgramTypeData> {
-  return [
-    {
-      programTypeId: 1,
-      programType: 'Community'
-    },
-    {
-      programTypeId: 2,
-      programType: 'Place of Service'
-    }
-  ];
-}
+// export function getProgramTypeArray(serviceurl: string): Array<ProgramTypeData> {
+//   return [
+//     {
+//       programTypeId: 1,
+//       programType: 'Community'
+//     },
+//     {
+//       programTypeId: 2,
+//       programType: 'Place of Service'
+//     }
+//   ];
+// }

@@ -3,24 +3,54 @@ import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Grid, Row, Col } from 'react-bootstrap';
 import { PlaceOfService } from '../PlaceOfService/PlaceOfService';
 import { Community } from '../Community/Community';
-import { ProgramTypeData, getProgramTypeArray } from '../ProgramType/ProgramTypeData';
+import ProgramTypeData from '../ProgramType/ProgramTypeData';
+import { DataAccess, handleError } from './../../common/DataAccess';
 
-interface PlaceofServiceProps {
+interface ProgramTypeProps {
   serviceUrl: string;
 }
 
-export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
-  private serviceUrl: string;
-  private programTypes: Array<ProgramTypeData>;
+interface ProgramTypeState {
+  data: ReadonlyArray<ProgramTypeData> | null;
+}
 
-  public constructor(props: PlaceofServiceProps) {
+export class ProgramType extends React.Component<ProgramTypeProps, ProgramTypeState> {
+  private serviceUrl: string;
+  private dataAccess: DataAccess<ProgramTypeData>;
+
+  public constructor(props: ProgramTypeProps) {
     super(props);
 
+    this.state = {
+      data: null
+    };
+
     this.serviceUrl = props.serviceUrl;
-    this.programTypes = getProgramTypeArray(this.serviceUrl);
+    this.dataAccess = new DataAccess<ProgramTypeData>();   
   }
 
+  public componentDidMount(): void {
+    if (!this.state.data) {
+          this.dataAccess.getData(this.serviceUrl)
+              .then((data: ReadonlyArray<ProgramTypeData>) => this.setState({ data: data }))
+              .catch(handleError);
+      }
+  }
   public render(): JSX.Element {
+    if (this.state.data === null) {
+      return (
+        <div>Loading...</div>
+      );
+    } else if (this.state.data.length === 0) {
+      return (
+        <div>No data</div>
+      );
+    } else {
+      return this.renderProgramTypeForm(this.state.data);
+    }
+  }
+
+  private renderProgramTypeForm(programTypeArray: ReadonlyArray<ProgramTypeData>): JSX.Element {
     return (
       <Grid fluid={true}>
         <Row>
@@ -28,7 +58,7 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
             <FormGroup controlId="programTypeDropDownList" bsSize="small">
               <ControlLabel>Program Type:</ControlLabel>
               <FormControl componentClass="select">
-                {this.createSelectOptionsFromProgramTypes(this.programTypes)}
+                {this.createSelectOptionsFromProgramTypes(programTypeArray)}
               </FormControl>
             </FormGroup>
           </Col>
@@ -43,12 +73,12 @@ export class ProgramType extends React.Component<PlaceofServiceProps, {}> {
         </Row>
       </Grid>
     );
-  }
+  } 
 
-  private createSelectOptionsFromProgramTypes(programTypeArray: Array<ProgramTypeData>): JSX.Element[]  {
+  private createSelectOptionsFromProgramTypes(programTypeArray: ReadonlyArray<ProgramTypeData>): JSX.Element[]  {
     return programTypeArray.map((programType: ProgramTypeData): JSX.Element => {
       const key: number = programType.programTypeId;
-      const value: string = programType.programType;
+      const value: string = programType.name;
       return <option key={key} value={key} >{value}</option>; 
     });
   }

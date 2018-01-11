@@ -73,7 +73,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
           </Row>
           <Row>
             <Col md={12}>
-              <ProgramType serviceUrl="http://localhost/api/programtypes" />
+              <ProgramType serviceUrl="http://localhost:3001/api/programtypes" />
             </Col>
           </Row>
         </Grid>
