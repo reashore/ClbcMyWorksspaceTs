@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
-import { VendorData } from './VendorData';
+import VendorData from './VendorData';
 import { DataAccess, handleError } from './../../common/DataAccess';
 
 interface VendorProps {

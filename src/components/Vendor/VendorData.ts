@@ -1,5 +1,5 @@
 
-export interface VendorData {
+export default interface VendorData {
     vendorId: number;
     name: string;
     ocgNumber: string;
