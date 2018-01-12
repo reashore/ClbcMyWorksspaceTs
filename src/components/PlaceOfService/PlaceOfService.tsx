@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Panel, Button, FormControlProps } from 'react-bootstrap';
 import PlaceOfServiceData from './PlaceOfServiceData';
-import { DataAccess, handleError } from './../../common/DataAccess';
+import { DataAccess, handleError } from '../../common/DataAccess';
 
 interface PlaceOfServiceProps {
   serviceUrl: string;

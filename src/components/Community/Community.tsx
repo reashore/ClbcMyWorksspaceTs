@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Panel } from 'react-bootstrap';
 import CpdAreaData from './CommunityData';
-import { DataAccess, handleError } from './../../common/DataAccess';
+import { DataAccess, handleError } from '../../common/DataAccess';
 
 interface CommunityProps {
   serviceUrl: string;

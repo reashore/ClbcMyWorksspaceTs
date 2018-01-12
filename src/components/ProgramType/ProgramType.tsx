@@ -4,7 +4,7 @@ import { FormGroup, ControlLabel, FormControl, Grid, Row, Col } from 'react-boot
 import PlaceOfService from '../PlaceOfService/PlaceOfService';
 import Community from '../Community/Community';
 import ProgramTypeData from '../ProgramType/ProgramTypeData';
-import { DataAccess, handleError } from './../../common/DataAccess';
+import { DataAccess, handleError } from '../../common/DataAccess';
 import * as webServices from '../../WebServicesConfiguration';
 
 interface ProgramTypeProps {

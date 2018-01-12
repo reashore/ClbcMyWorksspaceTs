@@ -4,7 +4,7 @@ import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormContro
 import ProgramType from '../ProgramType/ProgramType';
 import ServiceSubcategoryData from './ServiceSubcategoryData';
 import FundingModelData from './FundingModelData';
-import { DataAccess, handleError } from './../../common/DataAccess';
+import { DataAccess, handleError } from '../../common/DataAccess';
 import * as webServices from '../../WebServicesConfiguration';
 
 interface ProgramProps {

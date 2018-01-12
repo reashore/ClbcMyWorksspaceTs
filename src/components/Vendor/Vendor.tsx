@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
 import VendorData from './VendorData';
-import { DataAccess, handleError } from './../../common/DataAccess';
+import { DataAccess, handleError } from '../../common/DataAccess';
 
 interface VendorProps {
   serviceUrl: string;
@@ -35,20 +35,7 @@ export default class Vendor extends React.Component<VendorProps, VendorState> {
   public componentDidMount(): void {
     if (!this.state.data) {
           this.dataAccess.getData(this.serviceUrl)
-              .then((data: ReadonlyArray<VendorData>) => {
-                let vendorId;
-
-                if (data.length === 0) {
-                  vendorId = undefined;
-                } else {
-                  vendorId = data[0].vendorId;
-                }
-
-                this.setState({ 
-                  data: data, 
-                  vendorId: vendorId
-                });                  
-              })
+              .then(this.handleSuccess)
               .catch(handleError);
       }
   }
@@ -72,6 +59,21 @@ export default class Vendor extends React.Component<VendorProps, VendorState> {
       const vendorId = this.state.vendorId as number;
       return this.renderVendorForm(this.state.data, vendorId);
     }
+  }
+
+  private handleSuccess(data: ReadonlyArray<VendorData>): void {
+    let vendorId;
+
+    if (data.length === 0) {
+      vendorId = undefined;
+    } else {
+      vendorId = data[0].vendorId;
+    }
+
+    this.setState({ 
+      data: data, 
+      vendorId: vendorId
+    });                  
   }
 
   private renderVendorForm(dataArray: ReadonlyArray<VendorData>, vendorId: number): JSX.Element {
