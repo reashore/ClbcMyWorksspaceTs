@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
@@ -37,6 +38,7 @@ export default class Vendor extends React.Component<VendorProps, VendorState> {
     if (!this.state.data) {
           this.dataAccess.getData(this.serviceUrl)
               .then(this.handleSuccess)
+              .then((data: ReadonlyArray<VendorData>) => console.log(data))
               .catch(handleError);
       }
   }
@@ -62,7 +64,7 @@ export default class Vendor extends React.Component<VendorProps, VendorState> {
     }
   }
 
-  private handleSuccess(data: ReadonlyArray<VendorData>): void {
+  private handleSuccess(data: ReadonlyArray<VendorData>): ReadonlyArray<VendorData> {
     let vendorId;
 
     if (data.length === 0) {
@@ -74,7 +76,10 @@ export default class Vendor extends React.Component<VendorProps, VendorState> {
     this.setState({ 
       data: data, 
       vendorId: vendorId
-    });                  
+    });  
+    
+    // return input to allow promise chaining
+    return data;
   }
 
   private renderVendorForm(dataArray: ReadonlyArray<VendorData>, vendorId: number): JSX.Element {
