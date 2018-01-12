@@ -3,6 +3,7 @@ import { Form, Button, FormControlProps } from 'react-bootstrap';
 import { Vendor } from '../components/Vendor/Vendor';
 // import Vendor from 'vendor-component';
 import { Program } from '../components/Program/Program';
+import * as webServices from '../WebServicesConfiguration';
 
 interface ProgramData {
   programId: number;
@@ -28,10 +29,10 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     return (
       <Form id="createProgramForm" onSubmit={this.onSubmit}>
         <h2>Create Program</h2>
-        <Vendor serviceUrl="http://localhost:3001/api/vendors" />
+        <Vendor serviceUrl={webServices.vendorsUrl} />
         <Program
-          serviceSubcategoryServiceUrl="http://localhost:3001/api/serviceSubcategory"
-          fundingModelServiceUrl="http://localhost:3001/api/fundingModels"
+          serviceSubcategoryServiceUrl={webServices.serviceSubcategoryUrl}
+          fundingModelServiceUrl={webServices.fundingModelUrl}
         />
         <Button type="submit" bsStyle="primary" bsSize="small">
           Save Program

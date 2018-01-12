@@ -5,6 +5,7 @@ import { PlaceOfService } from '../PlaceOfService/PlaceOfService';
 import { Community } from '../Community/Community';
 import ProgramTypeData from '../ProgramType/ProgramTypeData';
 import { DataAccess, handleError } from './../../common/DataAccess';
+import * as webServices from '../../WebServicesConfiguration';
 
 interface ProgramTypeProps {
   serviceUrl: string;
@@ -65,10 +66,10 @@ export class ProgramType extends React.Component<ProgramTypeProps, ProgramTypeSt
         </Row>
         <Row>
           <Col md={6}>
-            <Community serviceUrl="http://localhost:3001/api/cpdAreas" />
+            <Community serviceUrl={webServices.cpdAreasUrl} />
           </Col>
           <Col md={6}>
-            <PlaceOfService serviceUrl="http://localhost:3001/api/placeofservices" />
+            <PlaceOfService serviceUrl={webServices.placeOfServicesUrl} />
           </Col>
         </Row>
       </Grid>

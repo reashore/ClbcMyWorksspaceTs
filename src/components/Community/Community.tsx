@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Panel } from 'react-bootstrap';
 import CpdAreaData from './CommunityData';
@@ -22,17 +21,18 @@ export class Community extends React.Component<CommunityProps, CommunityState> {
     this.state = {
       data: null
     };
-   
+
     this.serviceUrl = props.serviceUrl;
     this.dataAccess = new DataAccess<CpdAreaData>();
   }
 
   public componentDidMount(): void {
     if (!this.state.data) {
-          this.dataAccess.getData(this.serviceUrl)
-              .then((data: ReadonlyArray<CpdAreaData>) => this.setState({ data: data }))
-              .catch(handleError);
-      }
+      this.dataAccess
+        .getData(this.serviceUrl)
+        .then((data: ReadonlyArray<CpdAreaData>) => this.setState({ data: data }))
+        .catch(handleError);
+    }
   }
 
   public render(): JSX.Element {
@@ -70,7 +70,11 @@ export class Community extends React.Component<CommunityProps, CommunityState> {
     return cpdAreaArray.map((cpdArea: CpdAreaData): JSX.Element => {
       const key: number = cpdArea.cpdAreaId;
       const value: string = cpdArea.name;
-      return <option key={key} value={key}>{value}</option>;
+      return (
+        <option key={key} value={key}>
+          {value}
+        </option>
+      );
     });
   }
 }
