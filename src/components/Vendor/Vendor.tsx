@@ -30,6 +30,7 @@ export default class Vendor extends React.Component<VendorProps, VendorState> {
     this.dataAccess = new DataAccess<VendorData>();
 
     this.onChange = this.onChange.bind(this);
+    this.handleSuccess = this.handleSuccess.bind(this);
   }
 
   public componentDidMount(): void {
