@@ -5,6 +5,7 @@ import { ProgramType } from '../ProgramType/ProgramType';
 import ServiceSubcategoryData from './ServiceSubcategoryData';
 import FundingModelData from './FundingModelData';
 import { DataAccess, handleError } from './../../common/DataAccess';
+import * as webServices from '../../WebServicesConfiguration';
 
 interface ProgramProps {
   serviceSubcategoryServiceUrl: string;
@@ -102,7 +103,7 @@ export class Program extends React.Component<ProgramProps, ProgramState> {
           </Row>
           <Row>
             <Col md={12}>
-              <ProgramType serviceUrl="http://localhost:3001/api/programtypes" />
+              <ProgramType serviceUrl={webServices.programTypesUrl} />
             </Col>
           </Row>
         </Grid>

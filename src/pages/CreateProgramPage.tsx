@@ -31,8 +31,8 @@ export class CreateProgramPage extends React.Component<{}, {}> {
         <h2>Create Program</h2>
         <Vendor serviceUrl={webServices.vendorsUrl} />
         <Program
-          serviceSubcategoryServiceUrl={webServices.serviceSubcategoryUrl}
-          fundingModelServiceUrl={webServices.fundingModelUrl}
+          serviceSubcategoryServiceUrl={webServices.serviceSubcategoriesUrl}
+          fundingModelServiceUrl={webServices.fundingModelsUrl}
         />
         <Button type="submit" bsStyle="primary" bsSize="small">
           Save Program
@@ -41,7 +41,7 @@ export class CreateProgramPage extends React.Component<{}, {}> {
     );
   }
 
-  // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  // For event handler signature see: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
   private onSubmit(event: React.FormEvent<FormControlProps>): void {
     event.preventDefault();
 
