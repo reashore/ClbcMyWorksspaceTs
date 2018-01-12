@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Panel, Grid, Row, Col, FormGroup, ControlLabel, FormControl, FormControlProps } from 'react-bootstrap';
-import { ProgramType } from '../ProgramType/ProgramType';
+import ProgramType from '../ProgramType/ProgramType';
 import ServiceSubcategoryData from './ServiceSubcategoryData';
 import FundingModelData from './FundingModelData';
 import { DataAccess, handleError } from './../../common/DataAccess';
@@ -19,7 +19,7 @@ interface ProgramState {
   fundingModelData: ReadonlyArray<FundingModelData> | null;
 }
 
-export class Program extends React.Component<ProgramProps, ProgramState> {
+export default class Program extends React.Component<ProgramProps, ProgramState> {
   private serviceSubcategoryServiceUrl: string;
   private fundingModelServiceUrl: string;
   private serviceSubcategoryId: HTMLInputElement;

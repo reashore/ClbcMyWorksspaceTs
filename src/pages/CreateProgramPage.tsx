@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Form, Button, FormControlProps } from 'react-bootstrap';
-import { Vendor } from '../components/Vendor/Vendor';
-// import Vendor from 'vendor-component';
-import { Program } from '../components/Program/Program';
+import Vendor from '../components/Vendor/Vendor';
+import Program from '../components/Program/Program';
 import * as webServices from '../WebServicesConfiguration';
 
 interface ProgramData {
@@ -18,7 +17,7 @@ interface ProgramData {
   placeOfServiceId: number;
 }
 
-export class CreateProgramPage extends React.Component<{}, {}> {
+export default class CreateProgramPage extends React.Component<{}, {}> {
   public constructor(props: {}) {
     super(props);
 

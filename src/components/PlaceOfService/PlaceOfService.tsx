@@ -12,7 +12,7 @@ interface PlaceOfServiceState {
   data: ReadonlyArray<PlaceOfServiceData> | null;
 }
 
-export class PlaceOfService extends React.Component<PlaceOfServiceProps, PlaceOfServiceState> {
+export default class PlaceOfService extends React.Component<PlaceOfServiceProps, PlaceOfServiceState> {
   private serviceUrl: string;
   private dataAccess: DataAccess<PlaceOfServiceData>;
 

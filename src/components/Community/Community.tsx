@@ -11,7 +11,7 @@ interface CommunityState {
   data: ReadonlyArray<CpdAreaData> | null;
 }
 
-export class Community extends React.Component<CommunityProps, CommunityState> {
+export default class Community extends React.Component<CommunityProps, CommunityState> {
   private serviceUrl: string;
   private dataAccess: DataAccess<CpdAreaData>;
 

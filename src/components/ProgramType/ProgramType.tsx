@@ -1,8 +1,8 @@
 
 import * as React from 'react';
 import { FormGroup, ControlLabel, FormControl, Grid, Row, Col } from 'react-bootstrap';
-import { PlaceOfService } from '../PlaceOfService/PlaceOfService';
-import { Community } from '../Community/Community';
+import PlaceOfService from '../PlaceOfService/PlaceOfService';
+import Community from '../Community/Community';
 import ProgramTypeData from '../ProgramType/ProgramTypeData';
 import { DataAccess, handleError } from './../../common/DataAccess';
 import * as webServices from '../../WebServicesConfiguration';
@@ -15,7 +15,7 @@ interface ProgramTypeState {
   data: ReadonlyArray<ProgramTypeData> | null;
 }
 
-export class ProgramType extends React.Component<ProgramTypeProps, ProgramTypeState> {
+export default class ProgramType extends React.Component<ProgramTypeProps, ProgramTypeState> {
   private serviceUrl: string;
   private dataAccess: DataAccess<ProgramTypeData>;
 

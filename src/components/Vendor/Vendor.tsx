@@ -13,7 +13,7 @@ interface VendorState {
   vendorId: number | undefined;
 }
 
-export class Vendor extends React.Component<VendorProps, VendorState> {
+export default class Vendor extends React.Component<VendorProps, VendorState> {
   private serviceUrl: string;
   private dataAccess: DataAccess<VendorData>;
   private vendorDropDownList: HTMLInputElement;
@@ -123,8 +123,8 @@ export class Vendor extends React.Component<VendorProps, VendorState> {
     });
   }
 
-  // For event signature, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
-  private onChange(event: React.FormEvent<FormControlProps>) {
+  // For event handler signature, see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16208
+  private onChange(event: React.FormEvent<FormControlProps>): void {
     const vendorId = parseInt(this.vendorDropDownList.value, 10);
 
     this.setState({
