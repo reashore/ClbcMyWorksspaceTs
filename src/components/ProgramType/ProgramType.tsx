@@ -5,7 +5,7 @@ import PlaceOfService from '../PlaceOfService/PlaceOfService';
 import Community from '../Community/Community';
 import ProgramTypeData from '../ProgramType/ProgramTypeData';
 import { DataAccess, handleError } from '../../common/DataAccess';
-import * as webServices from '../../WebServicesConfiguration';
+import webServices from '../../WebServicesConfiguration';
 
 interface ProgramTypeProps {
   serviceUrl: string;

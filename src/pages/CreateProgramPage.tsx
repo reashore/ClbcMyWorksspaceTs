@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Form, Button, FormControlProps } from 'react-bootstrap';
 import Vendor from '../components/Vendor/Vendor';
 import Program from '../components/Program/Program';
-import * as webServices from '../WebServicesConfiguration';
+import webServices from '../WebServicesConfiguration';
 
 interface ProgramData {
   programId: number;

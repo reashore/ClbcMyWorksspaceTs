@@ -1,9 +1,13 @@
 
 const baseUrl = 'http://localhost:3001/api/';
 
-export const vendorsUrl = baseUrl + 'vendors';
-export const serviceSubcategoriesUrl = baseUrl + 'serviceSubcategories';
-export const fundingModelsUrl = baseUrl + 'fundingModels';
-export const cpdAreasUrl = baseUrl + 'cpdAreas';
-export const placeOfServicesUrl = baseUrl + 'placeOfServices';
-export const programTypesUrl = baseUrl + 'programTypes';
+const webServices = {
+    vendorsUrl: baseUrl + 'vendors',
+    serviceSubcategoriesUrl: baseUrl + 'serviceSubcategories',
+    fundingModelsUrl: baseUrl + 'fundingModels',
+    cpdAreasUrl: baseUrl + 'cpdAreas',
+    placeOfServicesUrl: baseUrl + 'placeOfServices',
+    programTypesUrl: baseUrl + 'programTypes'
+};
+
+export default webServices;
